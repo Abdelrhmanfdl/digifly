@@ -8,7 +8,7 @@ export default function Table({ rows }: TableProps) {
   return (
     <div className="w-full max-h-96 overflow-auto general-gray-border shadow-custom">
       <table
-        className="w-full bg-[#FDFDFD] divide-y text-lg text-first"
+        className="w-full bg-[#FDFDFD] divide-y divder-[red] text-lg text-first"
         style={{ borderColor: "rgba(229, 229, 229, 1)" }}
       >
         <thead className="bg-[#FAFAFA]">
@@ -20,7 +20,7 @@ export default function Table({ rows }: TableProps) {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y">
           {rows.slice(1)?.map((_, rowIdx) => (
             <tr key={rowIdx + 1}>
               {rows[rowIdx + 1]?.map((field, fieldIdx) => (
