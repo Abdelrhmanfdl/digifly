@@ -2,8 +2,19 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import TextInput from "../UI/TextInput";
 import Button from "../UI/Button";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AppUsersDispatch,
+  fetchUsers,
+  insertUser,
+  RootUsersState,
+  usersStore,
+} from "../../redux/usersStore";
+import User from "../../types/User";
+import { useEffect } from "react";
+import { THUNK_STATUS } from "../../redux";
 
-interface IFormInput {
+export interface IFormInput {
   firstName: string;
   lastName: string;
   mobileNumber: string;
@@ -15,14 +26,22 @@ const Form = () => {
   const minNameLength = 2;
   const maxNameLength = 15;
 
+  const dispatch = useDispatch<AppUsersDispatch>();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
+    const partialUser: User = {
+      FirstName: data.firstName,
+      LastName: data.lastName,
+      Phone: data.mobileNumber,
+      Email: data.email,
+    };
+    dispatch(insertUser(partialUser));
   };
 
   return (
