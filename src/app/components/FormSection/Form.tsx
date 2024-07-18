@@ -85,7 +85,7 @@ const Form = () => {
             ...register("mobileNumber", {
               required: "Mobile number is required",
               pattern: {
-                value: /^[0-9]{phoneNumberLength}$/,
+                value: /^[0-9]{11}$/,
                 message: `Mobile number must be ${phoneNumberLength} digits`,
               },
             }),
