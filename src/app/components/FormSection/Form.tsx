@@ -112,12 +112,6 @@ const Form = () => {
             }),
           }}
         />
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Email
-        </label>
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
