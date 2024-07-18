@@ -26,7 +26,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
       <div className="flex space-x-4">
         <div className="w-1/2">
           <TextInput
@@ -97,7 +97,6 @@ const Form = () => {
           </span>
         )}
       </div>
-
       <div>
         <TextInput
           labelText="Email"
