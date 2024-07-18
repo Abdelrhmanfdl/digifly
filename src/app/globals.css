@@ -22,3 +22,7 @@
     text-wrap: balance;
   }
 }
+
+input[type="text"]::placeholder {
+  color: rgba(179, 179, 179, 1);
+}

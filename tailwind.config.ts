@@ -20,11 +20,11 @@ const config: Config = {
       colors: {
         digifly: {
           green: {
-            DEFAULT: "#49BD88",
+            DEFAULT: "rgba(73, 189, 136, 1)",
             lighter: "rgba(73, 189, 136, 0.1)",
           },
           purple: {
-            DEFAULT: "#6D5CBC",
+            DEFAULT: "rgba(109, 92, 188, 1)",
             lighter: "rgba(109, 92, 188, 0.5)",
           },
           text: {
