@@ -18,11 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="m-auto">
+      <body className={inter.className + "relative m-auto"}>
+        <div className="relative z-10">
           <Navbar />
-          {children}
         </div>
+        {children}
       </body>
     </html>
   );
