@@ -28,6 +28,6 @@ input[type="text"]::placeholder {
 }
 
 .general-gray-border {
-  @apply rounded-sm border-[1px] border-solid;
-  border-color: rgba(229, 229, 229, 1);
+  @apply rounded-sm border-[1px] border-solid !important;
+  border-color: rgba(229, 229, 229, 1) !important;
 }

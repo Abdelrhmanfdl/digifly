@@ -32,6 +32,9 @@ const config: Config = {
           },
         },
       },
+      boxShadow: {
+        custom: "0px 4px 12px 0px rgba(0, 0, 0, 0.08)",
+      },
     },
   },
   plugins: [flowbite.plugin()],
