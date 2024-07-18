@@ -2,17 +2,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import TextInput from "../UI/TextInput";
 import Button from "../UI/Button";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  AppUsersDispatch,
-  fetchUsers,
-  insertUser,
-  RootUsersState,
-  usersStore,
-} from "../../redux/usersStore";
+import { insertUser } from "../../redux/store";
 import User from "../../types/User";
-import { useEffect } from "react";
-import { THUNK_STATUS } from "../../redux";
+import { useAppDispatch } from "../../redux/hooks";
 
 export interface IFormInput {
   firstName: string;
@@ -26,7 +18,7 @@ const Form = () => {
   const minNameLength = 2;
   const maxNameLength = 15;
 
-  const dispatch = useDispatch<AppUsersDispatch>();
+  const dispatch = useAppDispatch();
 
   const {
     register,

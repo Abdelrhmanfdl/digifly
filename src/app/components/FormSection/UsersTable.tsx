@@ -1,23 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Table from "../UI/Table";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  AppUsersDispatch,
-  fetchUsers,
-  RootUsersState,
-} from "../../redux/usersStore";
+import { fetchUsers, RootState } from "../../redux/store";
 import { THUNK_STATUS } from "../../redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 export default function UsersTable() {
   const [users, setUsers] = useState([] as string[][]);
 
-  const dispatch = useDispatch<AppUsersDispatch>();
-  const fetchedUsers = useSelector(
-    (state: RootUsersState) => state.users.users
-  );
-  const status = useSelector((state: RootUsersState) => state.users.status);
-  const error = useSelector((state: RootUsersState) => state.users.error);
+  const dispatch = useAppDispatch();
+  const fetchedUsers = useAppSelector((state: RootState) => state.users.users);
+  const status = useAppSelector((state: RootState) => state.users.status);
+  const error = useAppSelector((state: RootState) => state.users.error);
 
   useEffect(() => {
     if (status === THUNK_STATUS.IDLE) {
