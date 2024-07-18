@@ -20,8 +20,7 @@ export default function TextInput({
       <input
         {...formHookRegistration}
         type="text"
-        className="w-full h-[52px] py-4 px-6 rounded-sm border-[1px] border-[rgba(229, 229, 229, 1)] border-solid"
-        style={{ borderColor: "rgba(229, 229, 229, 1)" }}
+        className="w-full h-[52px] py-4 px-6 general-gray-border"
         onInput={(e) => onInput?.(e)}
         placeholder={placeHolder}
       />
