@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 import { insertUser } from "../../redux/store";
 import User from "../../types/User";
 import { useAppDispatch } from "../../redux/hooks";
+import { useTranslations } from "next-intl";
 
 export interface IFormInput {
   firstName: string;
@@ -14,6 +15,8 @@ export interface IFormInput {
 }
 
 const Form = () => {
+  const t = useTranslations("form");
+
   const phoneNumberLength = 11;
   const minNameLength = 2;
   const maxNameLength = 15;
@@ -38,21 +41,21 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
-      <div className="flex space-x-4">
-        <div className="w-1/2">
+      <div className="flex gap-4 justify-between flex-wrap lg:flex-nowrap">
+        <div className="w-full lg:w-1/2">
           <TextInput
-            labelText="First name"
-            placeHolder="First name"
+            labelText={t("firstName")}
+            placeHolder={t("firstName")}
             formHookRegistration={{
               ...register("firstName", {
-                required: "First name is required",
+                required: t("errors.firstNameRequired"),
                 minLength: {
                   value: 2,
-                  message: `Min name length is ${minNameLength}`,
+                  message: t("errors.minNameLenError", { minNameLength }),
                 },
                 maxLength: {
                   value: 15,
-                  message: `Max name length is ${maxNameLength}`,
+                  message: t("errors.maxNameLenError", { maxNameLength }),
                 },
               }),
             }}
@@ -63,20 +66,20 @@ const Form = () => {
             </span>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full lg:w-1/2">
           <TextInput
-            labelText="Last name"
-            placeHolder="Last name"
+            labelText={t("lastName")}
+            placeHolder={t("lastName")}
             formHookRegistration={{
               ...register("lastName", {
-                required: "Last name is required",
+                required: t("errors.lastNameRequired"),
                 minLength: {
                   value: 2,
-                  message: `Min name length is ${minNameLength}`,
+                  message: t("errors.minNameLenError", { minNameLength }),
                 },
                 maxLength: {
                   value: 15,
-                  message: `Max name length is ${maxNameLength}`,
+                  message: t("errors.maxNameLenError", { maxNameLength }),
                 },
               }),
             }}
@@ -90,14 +93,16 @@ const Form = () => {
       </div>
       <div>
         <TextInput
-          labelText="Mobile number"
-          placeHolder="Mobile number"
+          labelText={t("mobileNumber")}
+          placeHolder={t("mobileNumber")}
           formHookRegistration={{
             ...register("mobileNumber", {
-              required: "Mobile number is required",
+              required: t("errors.mobileNumberRequired"),
               pattern: {
                 value: /^[0-9]{11}$/,
-                message: `Mobile number must be ${phoneNumberLength} digits`,
+                message: t("errors.invalidPhoneNumber", {
+                  phoneNumberLength,
+                }),
               },
             }),
           }}
@@ -110,14 +115,14 @@ const Form = () => {
       </div>
       <div>
         <TextInput
-          labelText="Email"
-          placeHolder="Email"
+          labelText={t("email")}
+          placeHolder={t("email")}
           formHookRegistration={{
             ...register("email", {
-              required: "Email is required",
+              required: t("errors.emailRequired"),
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: "Enter a valid email address",
+                message: t("errors.invalidEmail"),
               },
             }),
           }}

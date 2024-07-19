@@ -4,5 +4,28 @@
     "categories": "الأقسام",
     "contact-us": "تواصل معنا",
     "about": "من نحن"
-  }
+  },
+  "form": {
+    "firstName": "الإسم الأول",
+    "lastName": "الإسم الأخير",
+    "mobileNumber": "رقم الموبايل",
+    "email": "البريد الإلكترونى",
+    "errors": {
+      "firstNameRequired": "الإسم الأول مطلوب",
+      "lastNameRequired": "الإسم الأخير مطلوب",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "mobileNumberRequired": "رقم الهاتف مطلوب",
+      "minNameLenError": "يجب ألا يكون أصغر من {minNameLength} حروف",
+      "maxNameLenError": "يجب ألا يكون أكبر من {maxNameLength} حروف",
+      "invalidPhoneNumber": "عدد الرقم يجب أن يكون {phoneNumberLength} رقم",
+      "invalidEmail": "أدخل البريد إلكتروني صحيح"
+    }
+  },
+  "table": {
+    "firstName": "الإسم الأول",
+    "lastName": "الإسم الأخير",
+    "mobileNumber": "رقم الموبايل",
+    "email": "البريد الإلكترونى"
+  },
+  "results": "النتائج"
 }

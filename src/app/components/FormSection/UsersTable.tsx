@@ -4,8 +4,10 @@ import Table from "../UI/Table";
 import { fetchUsers, RootState } from "../../redux/store";
 import { THUNK_STATUS } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useTranslations } from "next-intl";
 
 export default function UsersTable() {
+  const t = useTranslations("table");
   const [users, setUsers] = useState([] as string[][]);
 
   const dispatch = useAppDispatch();
@@ -39,7 +41,10 @@ export default function UsersTable() {
 
   return (
     <Table
-      rows={[["First name", "Last name", "Phone number", "Email"], ...users]}
+      rows={[
+        [t("firstName"), t("lastName"), t("mobileNumber"), t("email")],
+        ...users,
+      ]}
     />
   );
 }

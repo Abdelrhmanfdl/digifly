@@ -4,5 +4,29 @@
     "categories": "Categories",
     "contact-us": "Contact us",
     "about": "About"
-  }
+  },
+  "form": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "mobileNumber": "Mobile number",
+    "email": "Email",
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "emailRequired": "Email is required",
+      "mobileNumberRequired": "Mobile Number is required",
+      "minNameLenError": "Min name length is {minNameLength}",
+      "maxNameLenError": "Max name length is {maxNameLength}",
+      "invalidPhoneNumber": "Phone number must be {phoneNumberLength} digits",
+      "invalidEmail": "Enter a valid email address"
+    }
+  },
+  "table": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "mobileNumber": "Mobile number",
+    "email": "Email"
+  },
+
+  "results": "Results"
 }
