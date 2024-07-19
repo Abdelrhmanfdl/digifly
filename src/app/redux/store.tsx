@@ -6,7 +6,6 @@ import {
 import axios from "axios";
 import User from "../types/User";
 import { THUNK_STATUS } from ".";
-import languageReducer from "./languageSlice";
 
 const API_ENDPOINT = "http://localhost:1337/user-informations";
 
@@ -71,7 +70,6 @@ const usersSlice = createSlice({
 export const store = configureStore({
   reducer: {
     users: usersSlice.reducer,
-    language: languageReducer,
   },
 });
 

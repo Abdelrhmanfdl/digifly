@@ -31,3 +31,10 @@ input[type="text"]::placeholder {
   @apply rounded-sm border-[1px] border-solid !important;
   border-color: rgba(229, 229, 229, 1) !important;
 }
+
+html:lang("en") {
+  direction: ltr;
+}
+html:lang("ar") {
+  direction: rtl;
+}

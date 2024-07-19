@@ -13,8 +13,11 @@ export default function Table({ rows }: TableProps) {
       >
         <thead className="bg-[#FAFAFA]">
           <tr>
-            {rows[0]?.map((field) => (
-              <th className="px-2 max-xl:px-8 h-16 text-left font-[400] text-[#999999]">
+            {rows[0]?.map((field, idx) => (
+              <th
+                key={idx}
+                className="px-2 max-xl:px-8 h-16 text-left font-[400] text-[#999999]"
+              >
                 {field}
               </th>
             ))}

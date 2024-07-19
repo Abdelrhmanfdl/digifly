@@ -21,7 +21,7 @@ export default function UsersTable() {
 
   useEffect(() => {
     if (error != undefined) {
-      alert("failed to fetch users");
+      // alert("failed to fetch users");
     }
   }, [status]);
 

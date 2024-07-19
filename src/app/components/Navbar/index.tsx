@@ -1,13 +1,15 @@
 "use client";
-// src/components/Navbar.js
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import LanguageToggle from "../LanguageToggle";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import "./styles.css";
 
 const Navbar = () => {
+  const t = useTranslations("nav");
+
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,16 +46,16 @@ const Navbar = () => {
             {/* Primary Navbar items */}
             <div className="hidden md:flex items-center space-x-1 gap-16">
               <Link href="/" className={`${linkClasses("/")}`}>
-                Home
+                {t("home")}
               </Link>
               <Link href="/#" className={`${linkClasses("/categories")}`}>
-                Categories
+                {t("categories")}
               </Link>
               <Link href="/#" className={`${linkClasses("/contact-us")}`}>
-                Contact Us
+                {t("contact-us")}
               </Link>
               <Link href="/#" className={`${linkClasses("/about")}`}>
-                About
+                {t("about")}
               </Link>
             </div>
           </div>
@@ -94,7 +96,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {/* Mobile Menu */}
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         <Link href="/" className="block py-2 px-4 text-sm hover:bg-gray-200">
