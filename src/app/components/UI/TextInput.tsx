@@ -6,6 +6,8 @@ type TextInputProps = {
   placeHolder: string;
   onInput?: Function;
   formHookRegistration?: any;
+  className?: string;
+  inputClassName?: string;
 };
 
 export default function TextInput({
@@ -13,14 +15,16 @@ export default function TextInput({
   labelText,
   placeHolder,
   formHookRegistration,
+  className,
+  inputClassName,
 }: TextInputProps) {
   return (
-    <div className="flex flex-col items-start">
+    <div className={`${className} flex flex-col items-start`}>
       {labelText ? <label className="mb-2"> {labelText} </label> : ""}
       <input
         {...formHookRegistration}
         type="text"
-        className="w-full h-[52px] py-4 px-6 general-gray-border"
+        className={`${inputClassName} w-full h-[52px] py-4 px-6 general-gray-border`}
         onInput={(e) => onInput?.(e)}
         placeholder={placeHolder}
       />
