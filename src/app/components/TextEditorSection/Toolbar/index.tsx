@@ -1,22 +1,30 @@
 import React from "react";
 import BoldButton from "./Buttons/BoldButton";
 import FontDropdown from "./Buttons/FontDropdown";
+import ItalicButton from "./Buttons/ItalicButton";
+import UnderlineButton from "./Buttons/underlineButton";
 
 export type PositionStatus = {
   isBold?: boolean;
+  isItalic?: boolean;
+  isUnderline?: boolean;
   fontSize?: string;
 };
 
 type ToolbarProps = {
   toggleBold: Function;
+  toggleItalic: Function;
+  toggleUnderline: Function;
   applyFontSize: Function;
   status: PositionStatus;
 };
 
 export default function Toolbar({
   toggleBold,
+  toggleItalic,
+  toggleUnderline,
   applyFontSize,
-  status: { isBold = false, fontSize },
+  status: { isBold = false, isItalic = false, isUnderline = false, fontSize },
 }: ToolbarProps) {
   return (
     <div
@@ -27,6 +35,11 @@ export default function Toolbar({
       }}
     >
       <BoldButton isActive={isBold} onClick={() => toggleBold()} />
+      <ItalicButton isActive={isItalic} onClick={() => toggleItalic()} />
+      <UnderlineButton
+        isActive={isUnderline}
+        onClick={() => toggleUnderline()}
+      />
       <FontDropdown value={fontSize} onUpdate={applyFontSize} />
     </div>
   );
