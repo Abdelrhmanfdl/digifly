@@ -1,8 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import Menu from "./Menu";
 import Image from "next/image";
+
+type OptionType = { label: string; value: string };
 
 export default function HoverDropdown({
   options,
@@ -11,13 +13,15 @@ export default function HoverDropdown({
   iconUrl,
   iconWidth,
   iconHeight,
+  value,
 }: {
-  options: { label: string; value: string }[];
+  options: OptionType[];
   title?: string;
   onChangeValue: any;
   iconUrl?: string;
   iconWidth?: number;
   iconHeight?: number;
+  value?: OptionType;
 }) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null as any);
@@ -30,11 +34,18 @@ export default function HoverDropdown({
     setDropdownVisible(false);
   };
 
-  const handleChange = ({ label, value }: { label: string; value: string }) => {
-    if (value === selectedOption?.value) return;
+  const handleChange = ({ label, value }: OptionType) => {
     setSelectedOption({ label, value });
     onChangeValue({ label, value });
   };
+
+  useEffect(() => {
+    console.log("font update 1", value);
+    if (value) {
+      console.log("font update 2", value);
+      setSelectedOption(value);
+    }
+  }, [value]);
 
   return (
     <div

@@ -1,9 +1,9 @@
 import React from "react";
 import "./styles.css";
 import Image from "next/image";
-import { ACTION_BUTTON } from "./types";
+import { actionButtonProps } from "./types";
 
-export default function BoldButton({ isActive, onClick }: ACTION_BUTTON) {
+export default function BoldButton({ isActive, onClick }: actionButtonProps) {
   return (
     <div
       className={`toolbar-btn ${isActive ? "active" : ""}`}
