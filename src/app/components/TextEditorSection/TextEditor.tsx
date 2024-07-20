@@ -5,10 +5,11 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import FontSize from "./TipTapExtinsions/FontSize";
 import Underline from "@tiptap/extension-underline";
+import { Indent } from "./TipTapExtinsions/Indent";
 
 export default function TextEditor() {
   const editor = useEditor({
-    extensions: [StarterKit, Underline, FontSize],
+    extensions: [StarterKit, Underline, FontSize, Indent],
     content: "",
   });
 
@@ -58,6 +59,14 @@ export default function TextEditor() {
     editor?.chain().focus().toggleUnderline().run();
   };
 
+  const applyIndent = () => {
+    editor?.chain().focus().indent().run();
+  };
+
+  const applyOutdent = () => {
+    editor?.chain().focus().outdent().run();
+  };
+
   useEffect(() => {
     if (editor?.state) extractPositionStatus();
   }, [editor?.state]);
@@ -70,6 +79,8 @@ export default function TextEditor() {
           toggleItalic={toggleItalic}
           toggleUnderline={toggleUnderline}
           applyFontSize={applyFontSize}
+          applyIndent={applyIndent}
+          applyOutdent={applyOutdent}
           status={positionStatus}
         />
       </div>
