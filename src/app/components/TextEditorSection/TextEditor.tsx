@@ -127,9 +127,6 @@ export default function TextEditor() {
 
   return (
     <div className="flex flex-col w-full">
-      <button onClick={() => editor?.chain().focus().toggleOrderedList().run()}>
-        Toggle ordered list
-      </button>
       <div className="relative w-full z-[9999]">
         <Toolbar
           status={positionStatus}
