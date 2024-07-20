@@ -6,14 +6,35 @@ import FontSize from "./TipTapExtinsions/FontSize";
 import Underline from "@tiptap/extension-underline";
 import { Indent } from "./TipTapExtinsions/Indent";
 import TextAlign from "@tiptap/extension-text-align";
+import ListItem from "@tiptap/extension-list-item";
+import BulletList from "@tiptap/extension-bullet-list";
+import OrderedList from "@tiptap/extension-ordered-list";
+import Document from "@tiptap/extension-document";
+import Paragraph from "@tiptap/extension-paragraph";
+import Text from "@tiptap/extension-text";
 
 export default function TextEditor() {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "custom-ul",
+        },
+      }),
+      Document,
+      Paragraph,
+      Text,
       Underline,
       FontSize,
       Indent,
+      OrderedList.configure({
+        keepMarks: true,
+        HTMLAttributes: {
+          class: "custom-ol",
+        },
+      }),
+      ListItem,
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
@@ -48,6 +69,8 @@ export default function TextEditor() {
       isAlignLeft: editor?.isActive({ textAlign: "left" }),
       isAlignCenter: editor?.isActive({ textAlign: "center" }),
       isAlignRight: editor?.isActive({ textAlign: "right" }),
+      isUL: editor?.isActive("bulletList"),
+      isOL: editor?.isActive("orderedList"),
       fontSize: getFontSize(),
     });
   }
@@ -90,14 +113,26 @@ export default function TextEditor() {
     editor?.chain().focus().setTextAlign("right").run();
   };
 
+  const applyUnorderedList = () => {
+    editor?.chain().focus().toggleBulletList().run();
+  };
+
+  const applyOrderedList = () => {
+    editor?.chain().focus().toggleOrderedList().run();
+  };
+
   useEffect(() => {
     if (editor?.state) extractPositionStatus();
   }, [editor?.state]);
 
   return (
     <div className="flex flex-col w-full">
+      <button onClick={() => editor?.chain().focus().toggleOrderedList().run()}>
+        Toggle ordered list
+      </button>
       <div className="relative w-full z-[9999]">
         <Toolbar
+          status={positionStatus}
           toggleBold={toggleBold}
           toggleItalic={toggleItalic}
           toggleUnderline={toggleUnderline}
@@ -107,7 +142,8 @@ export default function TextEditor() {
           applyAlignLeft={applyAlignLeft}
           applyAlignCenter={applyAlignCenter}
           applyAlignRight={applyAlignRight}
-          status={positionStatus}
+          applyUL={applyUnorderedList}
+          applyOL={applyOrderedList}
         />
       </div>
       <div className="z-0 editor-container">

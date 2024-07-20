@@ -15,6 +15,8 @@ export type PositionStatus = {
   isAlignLeft?: boolean;
   isAlignCenter?: boolean;
   isAlignRight?: boolean;
+  isUL?: boolean;
+  isOL?: boolean;
   fontSize?: string;
 };
 
@@ -28,6 +30,8 @@ type ToolbarProps = {
   applyAlignLeft: Function;
   applyAlignCenter: Function;
   applyAlignRight: Function;
+  applyUL: Function;
+  applyOL: Function;
   status: PositionStatus;
 };
 
@@ -41,6 +45,8 @@ export default function Toolbar({
   applyAlignCenter,
   applyAlignRight,
   applyFontSize,
+  applyUL,
+  applyOL,
   status: {
     isBold = false,
     isItalic = false,
@@ -49,6 +55,8 @@ export default function Toolbar({
     isAlignLeft = false,
     isAlignCenter = false,
     isAlignRight = false,
+    isUL = false,
+    isOL = false,
   },
 }: ToolbarProps) {
   return (
@@ -85,6 +93,20 @@ export default function Toolbar({
         isActive={isAlignRight}
         icon="/images/icons/alignRight.svg"
         onClick={applyAlignRight}
+        width={24}
+        height={24}
+      />
+      <ToggleButton
+        isActive={isUL}
+        icon="/images/icons/unorderedList.svg"
+        onClick={applyUL}
+        width={24}
+        height={24}
+      />
+      <ToggleButton
+        isActive={isOL}
+        icon="/images/icons/orderedList.svg"
+        onClick={applyOL}
         width={24}
         height={24}
       />
