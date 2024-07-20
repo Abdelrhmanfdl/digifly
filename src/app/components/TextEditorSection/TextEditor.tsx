@@ -4,10 +4,11 @@ import { FONT_SIZES } from "./Toolbar/Buttons/FontDropdown";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import FontSize from "./TipTapExtinsions/FontSize";
+import Underline from "@tiptap/extension-underline";
 
 export default function TextEditor() {
   const editor = useEditor({
-    extensions: [StarterKit, FontSize],
+    extensions: [StarterKit, Underline, FontSize],
     content: "",
   });
 
@@ -33,6 +34,8 @@ export default function TextEditor() {
   function extractPositionStatus() {
     setPositionStatus({
       isBold: editor?.isActive("bold"),
+      isItalic: editor?.isActive("italic"),
+      isUnderline: editor?.isActive("underline"),
       fontSize: getFontSize(),
     });
   }
@@ -47,6 +50,14 @@ export default function TextEditor() {
     editor?.chain().focus().toggleBold().run();
   };
 
+  const toggleItalic = () => {
+    editor?.chain().focus().toggleItalic().run();
+  };
+
+  const toggleUnderline = () => {
+    editor?.chain().focus().toggleUnderline().run();
+  };
+
   useEffect(() => {
     if (editor?.state) extractPositionStatus();
   }, [editor?.state]);
@@ -56,6 +67,8 @@ export default function TextEditor() {
       <div className="relative w-full z-[9999]">
         <Toolbar
           toggleBold={toggleBold}
+          toggleItalic={toggleItalic}
+          toggleUnderline={toggleUnderline}
           applyFontSize={applyFontSize}
           status={positionStatus}
         />
