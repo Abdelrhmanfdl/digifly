@@ -1,15 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Toolbar, { PositionStatus } from "./Toolbar";
-import { FONT_SIZES } from "./Toolbar/Buttons/FontDropdown";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import FontSize from "./TipTapExtinsions/FontSize";
 import Underline from "@tiptap/extension-underline";
 import { Indent } from "./TipTapExtinsions/Indent";
+import TextAlign from "@tiptap/extension-text-align";
 
 export default function TextEditor() {
   const editor = useEditor({
-    extensions: [StarterKit, Underline, FontSize, Indent],
+    extensions: [
+      StarterKit,
+      Underline,
+      FontSize,
+      Indent,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+    ],
     content: "",
   });
 
@@ -37,6 +45,9 @@ export default function TextEditor() {
       isBold: editor?.isActive("bold"),
       isItalic: editor?.isActive("italic"),
       isUnderline: editor?.isActive("underline"),
+      isAlignLeft: editor?.isActive({ textAlign: "left" }),
+      isAlignCenter: editor?.isActive({ textAlign: "center" }),
+      isAlignRight: editor?.isActive({ textAlign: "right" }),
       fontSize: getFontSize(),
     });
   }
@@ -67,6 +78,18 @@ export default function TextEditor() {
     editor?.chain().focus().outdent().run();
   };
 
+  const applyAlignLeft = () => {
+    editor?.chain().focus().setTextAlign("left").run();
+  };
+
+  const applyAlignCenter = () => {
+    editor?.chain().focus().setTextAlign("center").run();
+  };
+
+  const applyAlignRight = () => {
+    editor?.chain().focus().setTextAlign("right").run();
+  };
+
   useEffect(() => {
     if (editor?.state) extractPositionStatus();
   }, [editor?.state]);
@@ -81,6 +104,9 @@ export default function TextEditor() {
           applyFontSize={applyFontSize}
           applyIndent={applyIndent}
           applyOutdent={applyOutdent}
+          applyAlignLeft={applyAlignLeft}
+          applyAlignCenter={applyAlignCenter}
+          applyAlignRight={applyAlignRight}
           status={positionStatus}
         />
       </div>

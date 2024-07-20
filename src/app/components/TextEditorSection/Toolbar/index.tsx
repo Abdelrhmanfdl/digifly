@@ -5,11 +5,16 @@ import ItalicButton from "./Buttons/ItalicButton";
 import UnderlineButton from "./Buttons/underlineButton";
 import IndentButton from "./Buttons/IndentButton";
 import OutdentButton from "./Buttons/OutdentButton";
+import ActionButton from "./Buttons/ActionButton";
+import ToggleButton from "./Buttons/ToggleButton";
 
 export type PositionStatus = {
   isBold?: boolean;
   isItalic?: boolean;
   isUnderline?: boolean;
+  isAlignLeft?: boolean;
+  isAlignCenter?: boolean;
+  isAlignRight?: boolean;
   fontSize?: string;
 };
 
@@ -20,6 +25,9 @@ type ToolbarProps = {
   applyIndent: Function;
   applyOutdent: Function;
   applyFontSize: Function;
+  applyAlignLeft: Function;
+  applyAlignCenter: Function;
+  applyAlignRight: Function;
   status: PositionStatus;
 };
 
@@ -29,8 +37,19 @@ export default function Toolbar({
   toggleUnderline,
   applyIndent,
   applyOutdent,
+  applyAlignLeft,
+  applyAlignCenter,
+  applyAlignRight,
   applyFontSize,
-  status: { isBold = false, isItalic = false, isUnderline = false, fontSize },
+  status: {
+    isBold = false,
+    isItalic = false,
+    isUnderline = false,
+    fontSize,
+    isAlignLeft = false,
+    isAlignCenter = false,
+    isAlignRight = false,
+  },
 }: ToolbarProps) {
   return (
     <div
@@ -48,6 +67,27 @@ export default function Toolbar({
       />
       <IndentButton onClick={() => applyIndent()} />
       <OutdentButton onClick={() => applyOutdent()} />
+      <ToggleButton
+        isActive={isAlignLeft}
+        icon="/images/icons/alignLeft.svg"
+        onClick={applyAlignLeft}
+        width={24}
+        height={24}
+      />
+      <ToggleButton
+        isActive={isAlignCenter}
+        icon="/images/icons/alignCenter.svg"
+        onClick={applyAlignCenter}
+        width={24}
+        height={24}
+      />
+      <ToggleButton
+        isActive={isAlignRight}
+        icon="/images/icons/alignRight.svg"
+        onClick={applyAlignRight}
+        width={24}
+        height={24}
+      />
       <FontDropdown value={fontSize} onUpdate={applyFontSize} />
     </div>
   );
