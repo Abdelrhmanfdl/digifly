@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Toolbar, { PositionStatus } from "./Toolbar";
+import Toolbar, { FONT_FAMILIES, PositionStatus } from "./Toolbar";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import FontSize from "./TipTapExtinsions/FontSize";
@@ -12,6 +12,8 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
 
 export default function TextEditor() {
   const editor = useEditor({
@@ -28,6 +30,8 @@ export default function TextEditor() {
       Underline,
       FontSize,
       Indent,
+      FontFamily,
+      TextStyle,
       OrderedList.configure({
         keepMarks: true,
         HTMLAttributes: {
@@ -61,6 +65,10 @@ export default function TextEditor() {
     }
   };
 
+  const getFontFamily = (): string | undefined => {
+    return editor?.getAttributes("textStyle")?.fontFamily;
+  };
+
   function extractPositionStatus() {
     setPositionStatus({
       isBold: editor?.isActive("bold"),
@@ -72,6 +80,7 @@ export default function TextEditor() {
       isUL: editor?.isActive("bulletList"),
       isOL: editor?.isActive("orderedList"),
       fontSize: getFontSize(),
+      fontFamily: getFontFamily(),
     });
   }
 
@@ -79,6 +88,10 @@ export default function TextEditor() {
     if (editor) {
       editor.chain().focus().setMark("fontSize", { fontSize: size }).run();
     }
+  };
+
+  const applyFontFamily = (fontFamily: string) => {
+    editor?.chain().focus().setFontFamily(fontFamily).run();
   };
 
   const toggleBold = () => {
@@ -141,6 +154,7 @@ export default function TextEditor() {
           applyAlignRight={applyAlignRight}
           applyUL={applyUnorderedList}
           applyOL={applyOrderedList}
+          applyFontFamily={applyFontFamily}
         />
       </div>
       <div className="z-0 editor-container">

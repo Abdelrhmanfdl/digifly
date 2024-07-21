@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import "./styles.css";
 import Menu from "./Menu";
 import Image from "next/image";
-
-type OptionType = { label: string; value: string };
+import { OptionType } from "../Buttons/types";
 
 export default function HoverDropdown({
   options,
@@ -21,7 +19,7 @@ export default function HoverDropdown({
   iconUrl?: string;
   iconWidth?: number;
   iconHeight?: number;
-  value?: OptionType;
+  value?: string | undefined;
 }) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null as any);
@@ -40,25 +38,25 @@ export default function HoverDropdown({
   };
 
   useEffect(() => {
-    console.log("font update 1", value);
     if (value) {
-      console.log("font update 2", value);
-      setSelectedOption(value);
+      setSelectedOption(options.find((option) => option.value == value));
+    } else {
+      setSelectedOption(options?.[0]);
     }
   }, [value]);
 
   return (
     <div
-      className="relative inline-block text-left"
+      className="w-full relative text-center inline-block left-0"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {iconUrl && !selectedOption ? (
         <Image alt="" src={iconUrl} width={iconWidth} height={iconHeight} />
       ) : (
-        <span className="">
+        <span className="text-nowrap flex flex-row flex-nowrap">
+          <img src="/images/icons/dropdownArrow.svg" className="me-1" />
           {selectedOption ? selectedOption.label : title}
-          {" ▾ "}
         </span>
       )}
       {isDropdownVisible && (

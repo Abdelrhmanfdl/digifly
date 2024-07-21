@@ -1,0 +1,79 @@
+.menu {
+  @apply relative;
+}
+
+.dropdown-menu {
+  @apply absolute;
+}
+
+/* ------------------ */
+.toolbar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.toolbar select,
+.toolbar button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.editor-container {
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-height: 300px;
+  cursor: text;
+}
+
+/*  */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.dropdown-select {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  display: block; /* Ensures that the select takes the space in the layout */
+}
+
+.dropdown-button:hover {
+  background-color: #e0e0e0;
+}
+
+.customIcon {
+  background-color: red !important;
+  width: 100px !important;
+  border: none !important;
+  box-shadow: none;
+}

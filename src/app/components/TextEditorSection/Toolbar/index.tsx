@@ -1,12 +1,38 @@
 import React from "react";
 import BoldButton from "./Buttons/BoldButton";
-import FontDropdown from "./Buttons/FontDropdown";
 import ItalicButton from "./Buttons/ItalicButton";
 import UnderlineButton from "./Buttons/underlineButton";
 import IndentButton from "./Buttons/IndentButton";
 import OutdentButton from "./Buttons/OutdentButton";
 import ActionButton from "./Buttons/ActionButton";
 import ToggleButton from "./Buttons/ToggleButton";
+import HoverDropdown from "./HoverDropdown";
+import SelectionDropdown from "./Buttons/SelectionDropdown";
+
+export const FONT_SIZES = [
+  { label: "12", value: "12px" },
+  { label: "16", value: "16px" },
+  { label: "20", value: "20px" },
+  { label: "24", value: "24px" },
+  { label: "32", value: "32px" },
+];
+
+export const FONT_FAMILIES = [
+  {
+    label: (
+      <span className="text-[10px] text-nowrap font-sans">Sans Serif</span>
+    ),
+    value: "sans",
+  },
+  {
+    label: <span className="text-xs text-nowrap font-serif">Serif</span>,
+    value: "serif",
+  },
+  {
+    label: <span className="text-xs text-nowrap font-[cursive]">Cursive</span>,
+    value: "cursive",
+  },
+];
 
 export type PositionStatus = {
   isBold?: boolean;
@@ -18,9 +44,11 @@ export type PositionStatus = {
   isUL?: boolean;
   isOL?: boolean;
   fontSize?: string;
+  fontFamily?: string;
 };
 
 type ToolbarProps = {
+  status: PositionStatus;
   toggleBold: Function;
   toggleItalic: Function;
   toggleUnderline: Function;
@@ -32,7 +60,7 @@ type ToolbarProps = {
   applyAlignRight: Function;
   applyUL: Function;
   applyOL: Function;
-  status: PositionStatus;
+  applyFontFamily: Function;
 };
 
 export default function Toolbar({
@@ -47,11 +75,13 @@ export default function Toolbar({
   applyFontSize,
   applyUL,
   applyOL,
+  applyFontFamily,
   status: {
     isBold = false,
     isItalic = false,
     isUnderline = false,
     fontSize,
+    fontFamily,
     isAlignLeft = false,
     isAlignCenter = false,
     isAlignRight = false,
@@ -110,7 +140,26 @@ export default function Toolbar({
         width={24}
         height={24}
       />
-      <FontDropdown value={fontSize} onUpdate={applyFontSize} />
+      <SelectionDropdown
+        iconUrl="/images/icons/formatting.svg"
+        options={FONT_SIZES.map(({ label, value }: any) => ({
+          label: label,
+          value,
+        }))}
+        onUpdate={applyFontSize}
+        value={fontSize}
+      />
+      <SelectionDropdown
+        iconUrl="/images/icons/font.svg"
+        iconWidth={100}
+        iconHeight={100}
+        options={FONT_FAMILIES.map(({ label, value }: any) => ({
+          label: label,
+          value,
+        }))}
+        onUpdate={applyFontFamily}
+        value={fontFamily}
+      />
     </div>
   );
 }

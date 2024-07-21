@@ -1,9 +1,13 @@
 .toolbar-btn {
   @apply flex flex-col justify-center items-center;
-  @apply w-20 h-16 align-middle text-center py-2 px-6;
+  @apply w-20 h-16 align-middle text-center py-2 px-4;
   @apply cursor-pointer outline-none;
   background-color: rgba(248, 247, 252, 1);
   border-right: 0.5px solid rgba(109, 92, 188, 0.05);
+}
+
+.toolbar-btn .option {
+  @apply hover:text-white hover:bg-digifly-green;
 }
 
 .toolbar-btn.active {

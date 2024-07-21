@@ -1,12 +1,12 @@
+import { OptionType } from "../Buttons/types";
 import Option, { OptionProps } from "./Option";
-import "./styles.css";
 
 export default ({
   options,
   onClick,
   isOpen,
 }: {
-  options: { label: string; value: string }[];
+  options: OptionType[];
   onClick: any;
   isOpen: boolean;
 }) => {

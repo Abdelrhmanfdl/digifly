@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@tailwindcss/typography": "^0.5.13",
     "@tiptap/extension-bullet-list": "^2.5.4",
+    "@tiptap/extension-font-family": "^2.5.4",
     "@tiptap/extension-list-item": "^2.5.4",
     "@tiptap/extension-ordered-list": "^2.5.4",
     "@tiptap/extension-text-align": "^2.5.4",
