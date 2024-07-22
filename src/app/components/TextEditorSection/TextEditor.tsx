@@ -1,5 +1,6 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import Toolbar, { FONT_FAMILIES, PositionStatus } from "./Toolbar";
+import Toolbar, { PositionStatus } from "./Toolbar";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import FontSize from "./TipTapExtinsions/FontSize";
@@ -16,14 +17,12 @@ import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 
 export default function TextEditor() {
+  const [history, setHistory] = useState<string[]>([""]);
+  const [redoStack, setRedoStack] = useState<string[]>([]);
+
   const editor = useEditor({
     extensions: [
       StarterKit,
-      BulletList.configure({
-        HTMLAttributes: {
-          class: "custom-ul",
-        },
-      }),
       Document,
       Paragraph,
       Text,
@@ -32,13 +31,18 @@ export default function TextEditor() {
       Indent,
       FontFamily,
       TextStyle,
+      ListItem,
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "custom-ul",
+        },
+      }),
       OrderedList.configure({
         keepMarks: true,
         HTMLAttributes: {
           class: "custom-ol",
         },
       }),
-      ListItem,
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
@@ -49,7 +53,39 @@ export default function TextEditor() {
       },
     },
     content: "",
+    onUpdate: ({ editor }) => {
+      const content = editor.getHTML();
+      setHistory((prevHistory) => [...prevHistory, content]);
+      setRedoStack([]); // Clear redo stack on new changes
+    },
   });
+
+  const applyUndo = () => {
+    setHistory((prevHistory) => {
+      if (prevHistory.length <= 1) return prevHistory;
+      const lastState = prevHistory[prevHistory.length - 2];
+      editor?.commands.setContent(lastState);
+
+      setRedoStack((prevRedoStack) => [
+        prevHistory[prevHistory.length - 1],
+        ...prevRedoStack,
+      ]);
+      return prevHistory.slice(0, -1);
+    });
+  };
+
+  const applyRedo = () => {
+    setRedoStack((prevRedoStack) => {
+      if (prevRedoStack.length === 0) return prevRedoStack;
+
+      const nextState = prevRedoStack[0];
+      editor?.commands.setContent(nextState);
+
+      setHistory((prevHistory) => [...prevHistory, nextState]);
+
+      return prevRedoStack.slice(1);
+    });
+  };
 
   const [positionStatus, setPositionStatus] = useState({} as PositionStatus);
 
@@ -144,26 +180,31 @@ export default function TextEditor() {
   }, [editor?.state]);
 
   return (
-    <div className="flex flex-col w-full border-[1px] border-solid border-[##6d5cbc1a]">
-      <div className="relative w-full z-[9999]">
-        <Toolbar
-          status={positionStatus}
-          toggleBold={toggleBold}
-          toggleItalic={toggleItalic}
-          toggleUnderline={toggleUnderline}
-          applyFontSize={applyFontSize}
-          applyIndent={applyIndent}
-          applyOutdent={applyOutdent}
-          applyAlignLeft={applyAlignLeft}
-          applyAlignCenter={applyAlignCenter}
-          applyAlignRight={applyAlignRight}
-          applyUL={applyUnorderedList}
-          applyOL={applyOrderedList}
-          applyFontFamily={applyFontFamily}
-        />
-      </div>
-      <div className="z-0 editor-container">
-        <EditorContent editor={editor} />
+    <div>
+      <div className="flex flex-col w-full border-[1px] border-solid border-[##6d5cbc1a]">
+        <div className="relative w-full z-[9999]">
+          <Toolbar
+            status={positionStatus}
+            toggleBold={toggleBold}
+            toggleItalic={toggleItalic}
+            toggleUnderline={toggleUnderline}
+            applyFontSize={applyFontSize}
+            applyIndent={applyIndent}
+            applyOutdent={applyOutdent}
+            applyAlignLeft={applyAlignLeft}
+            applyAlignCenter={applyAlignCenter}
+            applyAlignRight={applyAlignRight}
+            applyUL={applyUnorderedList}
+            applyOL={applyOrderedList}
+            applyFontFamily={applyFontFamily}
+            applyUndo={applyUndo}
+            applyRedo={applyRedo}
+          />
+        </div>
+
+        <div className="z-0 editor-container">
+          <EditorContent editor={editor} />
+        </div>
       </div>
     </div>
   );

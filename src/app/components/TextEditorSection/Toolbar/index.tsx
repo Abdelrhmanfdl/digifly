@@ -61,6 +61,9 @@ type ToolbarProps = {
   applyUL: Function;
   applyOL: Function;
   applyFontFamily: Function;
+  applyUndo: Function;
+  applyRedo: Function;
+  // addDividor: Function;
 };
 
 export default function Toolbar({
@@ -76,6 +79,9 @@ export default function Toolbar({
   applyUL,
   applyOL,
   applyFontFamily,
+  applyUndo,
+  applyRedo,
+  // addDividor,
   status: {
     isBold = false,
     isItalic = false,
@@ -159,6 +165,20 @@ export default function Toolbar({
         }))}
         onUpdate={applyFontFamily}
         value={fontFamily}
+      />
+      <ActionButton
+        alt="undo"
+        iconUrl="/images/icons/undo.svg"
+        onClick={applyUndo}
+        width={24}
+        height={24}
+      />
+      <ActionButton
+        alt="redp"
+        iconUrl="/images/icons/redo.svg"
+        onClick={applyRedo}
+        width={24}
+        height={24}
       />
     </div>
   );

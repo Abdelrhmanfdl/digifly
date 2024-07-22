@@ -4,17 +4,24 @@ import Image from "next/image";
 
 type Props = {
   onClick: Function;
-  icon: string;
+  alt: string;
+  iconUrl: string;
   width: number;
   height: number;
 };
 
-export default function ActionButton({ onClick, icon, width, height }: Props) {
+export default function ActionButton({
+  alt,
+  onClick,
+  iconUrl,
+  width,
+  height,
+}: Props) {
   return (
     <div className={`toolbar-btn`} onMouseDown={(e) => onClick()}>
       <Image
-        alt="AlightLeft"
-        src={icon}
+        alt={alt}
+        src={iconUrl}
         width={width}
         height={height}
         className="icon fill-white"
