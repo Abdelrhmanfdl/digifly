@@ -77,3 +77,8 @@
   border: none !important;
   box-shadow: none;
 }
+
+/* tiptap */
+.tiptap p {
+  margin: 1em 0;
+}

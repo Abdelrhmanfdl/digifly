@@ -6,12 +6,16 @@
   border-right: 0.5px solid rgba(109, 92, 188, 0.05);
 }
 
-.toolbar-btn .option {
+.toolbar-btn .hover-drop-down .option {
   @apply hover:text-white hover:bg-digifly-green;
 }
 
+.toolbar-btn {
+  @apply hover:bg-digifly-green-lighter;
+}
+
 .toolbar-btn.active {
-  @apply bg-digifly-green;
+  @apply bg-digifly-green hover:bg-digifly-green;
 }
 
 .toolbar-btn.active .icon {

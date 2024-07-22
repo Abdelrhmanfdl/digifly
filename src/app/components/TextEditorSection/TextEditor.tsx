@@ -43,6 +43,11 @@ export default function TextEditor() {
         types: ["heading", "paragraph"],
       }),
     ],
+    editorProps: {
+      attributes: {
+        class: "w-full min-h-60 bg-[#6d5cbc05] outline-none",
+      },
+    },
     content: "",
   });
 
@@ -139,7 +144,7 @@ export default function TextEditor() {
   }, [editor?.state]);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full border-[1px] border-solid border-[##6d5cbc1a]">
       <div className="relative w-full z-[9999]">
         <Toolbar
           status={positionStatus}
