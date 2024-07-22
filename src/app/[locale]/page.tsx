@@ -16,10 +16,10 @@ function Home({ params: { locale } }: any) {
       >
         <BackgroundLightSpot className="w-[120vw] h-[100vh] left-[20%] top-[-50px] z-0" />
 
-        <div className="contained my-8 z-10">
+        {/* <div className="contained my-8 z-10">
           <FormSection />
-        </div>
-        <div className="w-full 2xl:w-10/12 my-8">
+        </div> */}
+        {/* <div className="w-full 2xl:w-10/12 my-8">
           <MapComponent
             position={[30.0616113, 31.3368422]}
             tooltipContent={
@@ -45,7 +45,7 @@ function Home({ params: { locale } }: any) {
               </span>
             }
           />
-        </div>
+        </div> */}
         <div className="contained w-full my-10 z-100">
           <TextEditor />
         </div>

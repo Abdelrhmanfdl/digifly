@@ -8,21 +8,19 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Digifly Assesment",
   description: "Digifly Assesment",
-  icons: ["../logo.png"],
+  icons: ["/images/logo.png"],
 };
 
 export default function RootLayout({
   children,
-  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
   return (
-    <html lang={locale}>
-      <StoreProvidor>
-        <body className={inter.className + "relative m-auto"}>{children}</body>
-      </StoreProvidor>
+    <html>
+      <body className={inter.className + "relative m-auto"}>
+        <StoreProvidor>{children}</StoreProvidor>
+      </body>
     </html>
   );
 }

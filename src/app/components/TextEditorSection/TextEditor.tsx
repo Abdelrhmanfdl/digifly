@@ -53,10 +53,11 @@ export default function TextEditor() {
       },
     },
     content: "",
+    immediatelyRender: false,
     onUpdate: ({ editor }) => {
       const content = editor.getHTML();
       setHistory((prevHistory) => [...prevHistory, content]);
-      setRedoStack([]); // Clear redo stack on new changes
+      setRedoStack([]);
     },
   });
 
