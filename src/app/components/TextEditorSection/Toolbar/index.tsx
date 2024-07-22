@@ -95,38 +95,29 @@ export default function Toolbar({
 }: ToolbarProps) {
   return (
     <div
-      className="w-full flex flex-row flex-wrap justify-start bg-[#f8f7fc] rounded-sm border-[1px] border-solid"
+      className="w-full flex flex-row flex-wrap fixed-direction justify-start bg-[#f8f7fc] rounded-sm border-[1px] border-solid"
       onMouseDown={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
     >
       <ToggleButton
-        alt="bold"
-        isActive={isBold}
-        icon="/images/icons/bold.svg"
-        onClick={toggleBold}
-        width={12}
-        height={12}
-      />
-      <ToggleButton
-        alt="italic"
-        isActive={isItalic}
-        icon="/images/icons/italic.svg"
-        onClick={toggleItalic}
+        alt="orderedList"
+        isActive={isOL}
+        icon="/images/icons/orderedList.svg"
+        onClick={applyOL}
         width={24}
         height={24}
       />
       <ToggleButton
-        alt="underline"
-        isActive={isUnderline}
-        icon="/images/icons/underline.svg"
-        onClick={toggleUnderline}
+        alt="unorderedList"
+        isActive={isUL}
+        icon="/images/icons/unorderedList.svg"
+        onClick={applyUL}
         width={24}
         height={24}
       />
       <IndentButton onClick={() => applyIndent()} />
-      <OutdentButton onClick={() => applyOutdent()} />
       <ToggleButton
         alt="align-left"
         isActive={isAlignLeft}
@@ -151,19 +142,42 @@ export default function Toolbar({
         width={24}
         height={24}
       />
+      <OutdentButton onClick={() => applyOutdent()} />
       <ToggleButton
-        alt="unorderedList"
-        isActive={isUL}
-        icon="/images/icons/unorderedList.svg"
-        onClick={applyUL}
+        alt="bold"
+        isActive={isBold}
+        icon="/images/icons/bold.svg"
+        onClick={toggleBold}
+        width={12}
+        height={12}
+      />
+      <ToggleButton
+        alt="italic"
+        isActive={isItalic}
+        icon="/images/icons/italic.svg"
+        onClick={toggleItalic}
         width={24}
         height={24}
       />
       <ToggleButton
-        alt="orderedList"
-        isActive={isOL}
-        icon="/images/icons/orderedList.svg"
-        onClick={applyOL}
+        alt="underline"
+        isActive={isUnderline}
+        icon="/images/icons/underline.svg"
+        onClick={toggleUnderline}
+        width={24}
+        height={24}
+      />
+      <ActionButton
+        alt="redo"
+        iconUrl="/images/icons/redo.svg"
+        onClick={applyRedo}
+        width={24}
+        height={24}
+      />
+      <ActionButton
+        alt="undo"
+        iconUrl="/images/icons/undo.svg"
+        onClick={applyUndo}
         width={24}
         height={24}
       />
@@ -186,20 +200,6 @@ export default function Toolbar({
         }))}
         onUpdate={applyFontFamily}
         value={fontFamily}
-      />
-      <ActionButton
-        alt="undo"
-        iconUrl="/images/icons/undo.svg"
-        onClick={applyUndo}
-        width={24}
-        height={24}
-      />
-      <ActionButton
-        alt="redo"
-        iconUrl="/images/icons/redo.svg"
-        onClick={applyRedo}
-        width={24}
-        height={24}
       />
       <ActionButton
         alt="div"

@@ -12,7 +12,7 @@ export default ({
 }) => {
   return (
     <div
-      className={`absolute z-1000 right-0 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ease-out ${
+      className={`absolute z-1000 right-0 w-fit px-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ease-out ${
         isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
       }`}
     >
