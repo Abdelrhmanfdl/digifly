@@ -2,7 +2,7 @@
   box-shadow: 0px 4px 25px 0px rgba(109, 92, 186, 1);
   @apply whitespace-break-spaces;
   @apply flex flex-col justify-center;
-  @apply bg-digifly-purple opacity-100 text-white font-medium text-lg border-none rounded-lg relative bottom-20;
+  @apply bg-digifly-purple opacity-100 text-white font-medium text-lg border-none rounded-lg relative bottom-32;
   @apply px-12 py-6 align-middle;
   @apply w-[20rem] h-[7.5rem];
 }
