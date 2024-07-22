@@ -1,7 +1,7 @@
 import { OptionType } from "../Buttons/types";
 import Option, { OptionProps } from "./Option";
 
-export default ({
+const Menu = ({
   options,
   onClick,
   isOpen,
@@ -29,3 +29,5 @@ export default ({
     </div>
   );
 };
+
+export default Menu;
