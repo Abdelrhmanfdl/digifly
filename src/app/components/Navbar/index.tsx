@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-12">
-            <div className="md:mr-20">
+            <div className="md:me-20">
               <Link
                 href="/"
                 className="flex items-center py-5 px-1.5 text-gray-700"
