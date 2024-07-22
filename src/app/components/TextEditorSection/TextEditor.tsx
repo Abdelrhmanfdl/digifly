@@ -112,7 +112,6 @@ export default function TextEditor() {
   };
 
   function extractPositionStatus() {
-    console.log(process.env);
     setPositionStatus({
       isBold: editor?.isActive("bold"),
       isItalic: editor?.isActive("italic"),
