@@ -23,7 +23,8 @@ const Navbar = () => {
       pathname.replace(`/${locale}`, "") === path
         ? "text-digifly-green font-[600]"
         : "font-[400]";
-    styles += " text-[16px] p-1 hover:text-digifly-green cursor-default";
+    styles +=
+      " text-[16px] p-1 hover:text-digifly-green cursor-default min-w-28 hover:font-[600] text-center";
     return styles;
   };
 
