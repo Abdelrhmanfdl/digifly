@@ -7,5 +7,5 @@ nav .drop-down-item {
 }
 
 .contained {
-  @apply w-full lg:w-10/12 px-4 lg:p-0 md:p-2;
+  @apply w-full lg:w-[85%] px-4 lg:p-0 md:p-2;
 }

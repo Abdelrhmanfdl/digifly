@@ -18,13 +18,13 @@ export default function ActionButton({
   height,
 }: Props) {
   return (
-    <div className={`toolbar-btn`} onMouseDown={(e) => onClick()}>
+    <div className={`group toolbar-btn`} onMouseDown={(e) => onClick()}>
       <Image
         alt={alt}
         src={iconUrl}
         width={width}
         height={height}
-        className="icon fill-white"
+        className="icon fill-white group-hover:invert"
       />
     </div>
   );

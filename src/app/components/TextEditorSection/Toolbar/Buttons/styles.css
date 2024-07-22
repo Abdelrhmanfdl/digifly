@@ -12,7 +12,11 @@
 }
 
 .toolbar-btn {
-  @apply hover:bg-digifly-green-lighter;
+  @apply hover:text-white hover:bg-digifly-green transition-colors;
+}
+
+.toolbar-btn .icon {
+  @apply group-hover:invert;
 }
 
 .toolbar-btn.active {

@@ -21,7 +21,7 @@ export default function ToggleButton({
 }: Props) {
   return (
     <div
-      className={`toolbar-btn ${isActive ? "active" : ""}`}
+      className={`group toolbar-btn ${isActive ? "active" : ""}`}
       onMouseDown={(e) => onClick()}
     >
       <Image
@@ -29,7 +29,7 @@ export default function ToggleButton({
         src={icon}
         width={width}
         height={height}
-        className="icon fill-white"
+        className="icon fill-white group-hover:invert"
       />
     </div>
   );

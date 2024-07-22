@@ -55,7 +55,7 @@ export default function HoverDropdown({
         <Image alt="" src={iconUrl} width={iconWidth} height={iconHeight} />
       ) : (
         <span className="text-nowrap flex flex-row flex-nowrap">
-          <img src="/images/icons/dropdownArrow.svg" className="me-1" />
+          <img src="/images/icons/dropdownArrow.svg" className="icon me-1" />
           {selectedOption ? selectedOption.label : title}
         </span>
       )}
