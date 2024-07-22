@@ -175,6 +175,15 @@ export default function TextEditor() {
     editor?.chain().focus().toggleOrderedList().run();
   };
 
+  const addDividor = () => {
+    editor?.commands.insertContent("<hr>");
+    editor
+      ?.chain()
+      .focus()
+      .setTextSelection(editor?.state.selection.head + 1) // Move cursor to position
+      .run();
+  };
+
   useEffect(() => {
     if (editor?.state) extractPositionStatus();
   }, [editor?.state]);
@@ -199,6 +208,7 @@ export default function TextEditor() {
             applyFontFamily={applyFontFamily}
             applyUndo={applyUndo}
             applyRedo={applyRedo}
+            addDividor={addDividor}
           />
         </div>
 
