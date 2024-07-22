@@ -5,7 +5,7 @@ interface LanguageState {
 }
 
 export enum LANGUAGE {
-  AR = "AR",
+  AR = "ar",
   EN = "en",
 }
 
