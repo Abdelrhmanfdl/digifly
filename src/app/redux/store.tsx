@@ -7,7 +7,7 @@ import axios from "axios";
 import User from "../types/User";
 import { THUNK_STATUS } from ".";
 
-const API_ENDPOINT = "http://localhost:1337/user-informations";
+const API_ENDPOINT = process.env.API_ENDPOINT || "";
 
 type ServerResponse = {
   response: string;
