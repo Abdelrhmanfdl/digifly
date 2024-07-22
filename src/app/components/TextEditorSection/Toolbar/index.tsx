@@ -1,7 +1,4 @@
 import React from "react";
-import BoldButton from "./Buttons/BoldButton";
-import ItalicButton from "./Buttons/ItalicButton";
-import UnderlineButton from "./Buttons/underlineButton";
 import IndentButton from "./Buttons/IndentButton";
 import OutdentButton from "./Buttons/OutdentButton";
 import ActionButton from "./Buttons/ActionButton";
@@ -104,15 +101,34 @@ export default function Toolbar({
         e.stopPropagation();
       }}
     >
-      <BoldButton isActive={isBold} onClick={() => toggleBold()} />
-      <ItalicButton isActive={isItalic} onClick={() => toggleItalic()} />
-      <UnderlineButton
+      <ToggleButton
+        alt="bold"
+        isActive={isBold}
+        icon="/images/icons/bold.svg"
+        onClick={toggleBold}
+        width={12}
+        height={12}
+      />
+      <ToggleButton
+        alt="italic"
+        isActive={isItalic}
+        icon="/images/icons/italic.svg"
+        onClick={toggleItalic}
+        width={24}
+        height={24}
+      />
+      <ToggleButton
+        alt="underline"
         isActive={isUnderline}
-        onClick={() => toggleUnderline()}
+        icon="/images/icons/underline.svg"
+        onClick={toggleUnderline}
+        width={24}
+        height={24}
       />
       <IndentButton onClick={() => applyIndent()} />
       <OutdentButton onClick={() => applyOutdent()} />
       <ToggleButton
+        alt="align-left"
         isActive={isAlignLeft}
         icon="/images/icons/alignLeft.svg"
         onClick={applyAlignLeft}
@@ -120,6 +136,7 @@ export default function Toolbar({
         height={24}
       />
       <ToggleButton
+        alt="align-center"
         isActive={isAlignCenter}
         icon="/images/icons/alignCenter.svg"
         onClick={applyAlignCenter}
@@ -127,6 +144,7 @@ export default function Toolbar({
         height={24}
       />
       <ToggleButton
+        alt="align-right"
         isActive={isAlignRight}
         icon="/images/icons/alignRight.svg"
         onClick={applyAlignRight}
@@ -134,6 +152,7 @@ export default function Toolbar({
         height={24}
       />
       <ToggleButton
+        alt="unorderedList"
         isActive={isUL}
         icon="/images/icons/unorderedList.svg"
         onClick={applyUL}
@@ -141,6 +160,7 @@ export default function Toolbar({
         height={24}
       />
       <ToggleButton
+        alt="orderedList"
         isActive={isOL}
         icon="/images/icons/orderedList.svg"
         onClick={applyOL}

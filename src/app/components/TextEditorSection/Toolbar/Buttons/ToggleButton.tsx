@@ -8,6 +8,7 @@ type Props = {
   icon: string;
   width: number;
   height: number;
+  alt: string;
 };
 
 export default function ToggleButton({
@@ -16,6 +17,7 @@ export default function ToggleButton({
   width,
   height,
   isActive,
+  alt,
 }: Props) {
   return (
     <div
@@ -23,7 +25,7 @@ export default function ToggleButton({
       onMouseDown={(e) => onClick()}
     >
       <Image
-        alt="AlightLeft"
+        alt={alt}
         src={icon}
         width={width}
         height={height}
