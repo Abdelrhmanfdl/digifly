@@ -6,7 +6,7 @@ import LanguageToggle from "../LanguageToggle";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import "./styles.css";
-import { LANGUAGE } from "../../redux/languageSlice";
+import { LANGUAGE } from "../../types/Language";
 
 const Navbar = () => {
   const t = useTranslations("nav");

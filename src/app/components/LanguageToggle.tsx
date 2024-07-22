@@ -3,11 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-
-enum LANGUAGE {
-  AR = "ar",
-  EN = "en",
-}
+import { LANGUAGE } from "../types/Language";
 
 export default function LanguageToggle() {
   const t = useTranslations("nav");

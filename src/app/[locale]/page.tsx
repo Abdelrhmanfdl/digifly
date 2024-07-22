@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import MapComponent from "../components/MapSection";
 import TextEditor from "../components/TextEditorSection/TextEditor";
 import { useTranslations } from "next-intl";
-import { LANGUAGE } from "../redux/languageSlice";
+import { LANGUAGE } from "../types/Language";
 
 function Home({ params: { locale } }: any) {
   const t = useTranslations("mapMessage");
