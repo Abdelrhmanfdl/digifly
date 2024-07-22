@@ -4,11 +4,13 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import LanguageToggle from "../LanguageToggle";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import "./styles.css";
+import { LANGUAGE } from "../../redux/languageSlice";
 
 const Navbar = () => {
   const t = useTranslations("nav");
+  const locale = useLocale();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -16,14 +18,20 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
   const linkClasses = (path: string) => {
     let styles =
-      pathname === path ? "text-digifly-green font-[600]" : "font-[400]";
-    styles +=
-      " text-[16px]  hover:text-digifly-green hover:font-[600] cursor-default";
+      pathname.replace(`/${locale}`, "") === path
+        ? "text-digifly-green font-[600]"
+        : "font-[400]";
+    styles += " text-[16px] p-1 hover:text-digifly-green cursor-default";
     return styles;
   };
+
+  /**
+
+  [] [] [] []
+ 
+ */
 
   return (
     <nav className="bg-trasparent absolute w-full">
@@ -43,40 +51,26 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            {/* Primary Navbar items */}
-            <div className="hidden md:flex items-center space-x-1 gap-16">
-              <Link href="/" className={`${linkClasses("/")}`}>
+            <div className="hidden md:flex flex-row items-center justify-between space-x-1 gap-16">
+              <Link href="/" className={`${linkClasses("")}`}>
                 {t("home")}
               </Link>
-              <Link href="/#" className={`${linkClasses("/categories")}`}>
+              <Link href="/#" className={`${linkClasses("categories")}`}>
                 {t("categories")}
               </Link>
-              <Link href="/#" className={`${linkClasses("/contact-us")}`}>
+              <Link href="/#" className={`${linkClasses("contact-us")}`}>
                 {t("contact-us")}
               </Link>
-              <Link href="/#" className={`${linkClasses("/about")}`}>
+              <Link href="/#" className={`${linkClasses("about")}`}>
                 {t("about")}
               </Link>
             </div>
           </div>
-          {/* Secondary Navbar items */}
-          {/* <div className="hidden md:flex items-center space-x-1">
-            <Link href="/login" className="py-5 px-3">
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="py-2 px-3 bg-yellow-400 text-yellow-900 rounded hover:bg-yellow-300"
-            >
-              Signup
-            </Link>
-          </div> */}
           <div className="self-center">
             <LanguageToggle />
           </div>
-
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center z-1000">
             <button onClick={toggleMenu} className="mobile-menu-button">
               <svg
                 className="w-6 h-6"
@@ -93,44 +87,27 @@ const Navbar = () => {
                 />
               </svg>
             </button>
+            {/* Mobile Menu */}
+            <div
+              className={`my-2 mx-1 ${isOpen ? "block" : "hidden"} ${
+                locale == LANGUAGE.AR ? "left-2" : "right-2"
+              } md:hidden absolute top-12 bg-white rounded-sm text-center text-lg `}
+            >
+              <div className={`drop-down-item`}>
+                <Link href="/">{t("home")}</Link>
+              </div>
+              <div className={`drop-down-item`}>
+                <Link href="/#">{t("categories")}</Link>
+              </div>
+              <div className={`drop-down-item`}>
+                <Link href="/#">{t("contact-us")}</Link>
+              </div>
+              <div className={`drop-down-item`}>
+                <Link href="/#">{t("about")}</Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      {/* Mobile Menu */}
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-        <Link href="/" className="block py-2 px-4 text-sm hover:bg-gray-200">
-          Home
-        </Link>
-        <Link
-          href="/about"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          About
-        </Link>
-        <Link
-          href="/services"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Services
-        </Link>
-        <Link
-          href="/contact"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Contact
-        </Link>
-        <Link
-          href="/login"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Login
-        </Link>
-        <Link
-          href="/signup"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Signup
-        </Link>
       </div>
     </nav>
   );

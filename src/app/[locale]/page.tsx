@@ -3,6 +3,7 @@ import BackgroundLightSpot from "@/app/components/BackgroundLightSpot";
 import FormSection from "@/app/components/FormSection/FormSection";
 import Navbar from "../components/Navbar";
 import MapComponent from "../components/MapSection";
+import TextEditor from "../components/TextEditorSection/TextEditor";
 
 function Home({ params: { locale } }: any) {
   return (
@@ -11,9 +12,10 @@ function Home({ params: { locale } }: any) {
         <Navbar />
       </div>
       <div
-        className={`relative flex min-h-screen flex-col items-center justify-between p-24 overflow-x-hidden`}
+        className={`relative flex min-h-screen flex-col items-center justify-between p-24 overflow-x-hidden z-0`}
       >
         <BackgroundLightSpot className="w-[120vw] h-[100vh] left-[20%] top-[-50px] z-0" />
+
         <div className="w-full z-10">
           <FormSection />
         </div>
@@ -28,6 +30,9 @@ function Home({ params: { locale } }: any) {
               </span>
             }
           />
+        </div>
+        <div className="w-full my-8 z-100">
+          <TextEditor />
         </div>
       </div>
     </main>

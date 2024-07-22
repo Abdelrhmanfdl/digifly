@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+nav .drop-down-item {
+  @apply hover:bg-digifly-green hover:text-white m-1;
+}
