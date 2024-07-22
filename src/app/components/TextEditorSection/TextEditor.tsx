@@ -112,6 +112,7 @@ export default function TextEditor() {
   };
 
   function extractPositionStatus() {
+    console.log(process.env);
     setPositionStatus({
       isBold: editor?.isActive("bold"),
       isItalic: editor?.isActive("italic"),
@@ -217,7 +218,7 @@ export default function TextEditor() {
         />
       </div>
 
-      <div className="z-0 editor-container">
+      <div className="z-0 editor-container fixed-direction">
         <EditorContent editor={editor} />
       </div>
     </div>
