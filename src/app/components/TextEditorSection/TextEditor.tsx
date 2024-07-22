@@ -180,8 +180,12 @@ export default function TextEditor() {
     editor
       ?.chain()
       .focus()
-      .setTextSelection(editor?.state.selection.head + 1) // Move cursor to position
+      .setTextSelection(editor?.state.selection.head + 1)
       .run();
+  };
+
+  const addSmile = () => {
+    editor?.chain().focus().insertContent("😊").run();
   };
 
   useEffect(() => {
@@ -209,6 +213,7 @@ export default function TextEditor() {
             applyUndo={applyUndo}
             applyRedo={applyRedo}
             addDividor={addDividor}
+            addSmile={addSmile}
           />
         </div>
 

@@ -6,7 +6,6 @@ import IndentButton from "./Buttons/IndentButton";
 import OutdentButton from "./Buttons/OutdentButton";
 import ActionButton from "./Buttons/ActionButton";
 import ToggleButton from "./Buttons/ToggleButton";
-import HoverDropdown from "./HoverDropdown";
 import SelectionDropdown from "./Buttons/SelectionDropdown";
 
 export const FONT_SIZES = [
@@ -64,6 +63,7 @@ type ToolbarProps = {
   applyUndo: Function;
   applyRedo: Function;
   addDividor: Function;
+  addSmile: Function;
 };
 
 export default function Toolbar({
@@ -82,6 +82,7 @@ export default function Toolbar({
   applyUndo,
   applyRedo,
   addDividor,
+  addSmile,
   status: {
     isBold = false,
     isItalic = false,
@@ -182,8 +183,15 @@ export default function Toolbar({
       />
       <ActionButton
         alt="div"
-        iconUrl="/images/icons/"
+        iconUrl=""
         onClick={addDividor}
+        width={24}
+        height={24}
+      />
+      <ActionButton
+        alt="😊"
+        iconUrl=""
+        onClick={addSmile}
         width={24}
         height={24}
       />
