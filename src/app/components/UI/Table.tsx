@@ -16,7 +16,7 @@ export default function Table({ rows }: TableProps) {
             {rows[0]?.map((field, idx) => (
               <th
                 key={idx}
-                className="px-2 max-xl:px-8 h-16 text-left font-[400] text-[#999999]"
+                className="px-2 max-xl:px-8 h-16 text-start font-[400] text-sm text-[#999999]"
               >
                 {field}
               </th>
@@ -29,7 +29,7 @@ export default function Table({ rows }: TableProps) {
               {rows[rowIdx + 1]?.map((field, fieldIdx) => (
                 <td
                   key={fieldIdx}
-                  className="h-16 font-medium whitespace-nowrap px-2 max-xl:px-8"
+                  className="h-16 font-medium text-sm whitespace-nowrap px-2 max-xl:px-8"
                 >
                   {field}
                 </td>
