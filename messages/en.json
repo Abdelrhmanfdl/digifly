@@ -6,6 +6,7 @@
     "about": "About"
   },
   "form": {
+    "send": "Send",
     "firstName": "First name",
     "lastName": "Last name",
     "mobileNumber": "Mobile number",

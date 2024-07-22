@@ -6,6 +6,7 @@
     "about": "من نحن"
   },
   "form": {
+    "send": "إرسال",
     "firstName": "الإسم الأول",
     "lastName": "الإسم الأخير",
     "mobileNumber": "رقم الموبايل",

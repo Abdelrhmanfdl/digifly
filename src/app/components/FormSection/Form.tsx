@@ -132,7 +132,7 @@ const Form = () => {
         )}
       </div>
 
-      <Button text="Send" type="submit" />
+      <Button text={t("send")} type="submit" />
     </form>
   );
 };
