@@ -27,6 +27,11 @@
     "mobileNumber": "Mobile number",
     "email": "Email"
   },
-
+  "mapMessage": {
+    "digi": "Digi",
+    "fly": "Fly",
+    "company": "Company",
+    "welcomes-you": "welcomes you"
+  },
   "results": "Results"
 }

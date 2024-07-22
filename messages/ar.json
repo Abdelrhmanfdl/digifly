@@ -27,5 +27,11 @@
     "mobileNumber": "رقم الموبايل",
     "email": "البريد الإلكترونى"
   },
+  "mapMessage": {
+    "digi": "ديجى",
+    "fly": "فلاي",
+    "company": "شركة",
+    "welcomes-you": "ترحب بكم"
+  },
   "results": "النتائج"
 }

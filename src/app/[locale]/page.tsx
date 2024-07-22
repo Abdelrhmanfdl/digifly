@@ -24,9 +24,24 @@ function Home({ params: { locale } }: any) {
             position={[30.0616113, 31.3368422]}
             tooltipContent={
               <span>
-                <span className="text-digifly-green font-bold">Digi</span>{" "}
-                <span className="font-bold">Fly</span>{" "}
-                <span>Company welcomes you</span>
+                {locale === LANGUAGE.AR ? (
+                  <span>
+                    {t("company")}{" "}
+                    <span className="text-digifly-green font-bold">
+                      {t("digi")}
+                    </span>
+                    <span className="font-bold"> {t("fly")} </span>
+                    {`${t("welcomes-you")}`}
+                  </span>
+                ) : (
+                  <span>
+                    <span className="text-digifly-green font-bold">
+                      {t("digi")}
+                    </span>
+                    <span className="font-bold"> {t("fly")} </span>
+                    {`${t("company")} ${t("welcomes-you")}`}
+                  </span>
+                )}
               </span>
             }
           />

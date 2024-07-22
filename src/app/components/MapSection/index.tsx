@@ -1,36 +1,3 @@
-// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-// import { LatLngExpression } from "leaflet";
-
-// const MapComponent: React.FC<MapComponentProps> = ({
-//   position,
-//   tooltipContent,
-// }) => {
-//   return (
-//     <div className="map-container">
-//       <h1 className="welcome-message">{tooltipContent}</h1>
-//       <MapContainer
-//         center={position}
-//         zoom={13}
-//         style={{ height: "500px", width: "100%" }}
-//       >
-//         {/* <TileLayer
-//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//         /> */}
-//         <TileLayer
-//           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//         />
-//         {/* <Marker position={position}>
-//           <Popup>{tooltipContent}</Popup>
-//         </Marker> */}
-//       </MapContainer>
-//     </div>
-//   );
-// };
-
-// export default MapComponent;
-
 "use client";
 
 interface MapComponentProps {
@@ -47,6 +14,7 @@ import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import { icon, LatLngExpression } from "leaflet";
 import L from "leaflet";
 import "@/app/components/MapSection/styles.css";
+import { useTranslations } from "next-intl";
 
 // const redIcon = new L.Icon({
 //   iconUrl:
@@ -71,7 +39,7 @@ export default function Map({ position, tooltipContent }: MapComponentProps) {
       zoom={18}
       maxZoom={18}
       scrollWheelZoom={true}
-      className="w-full min-h-96 bg-gradient-to-l bg-red-600"
+      className="w-full min-h-96 bg-gradient-to-l"
       style={{
         backgroundImage:
           "linear-gradient(rgba(0,0,0,0) 0%, gray 10%, gray 90%, rgba(0,0,0,0)",
