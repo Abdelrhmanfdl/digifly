@@ -45,7 +45,7 @@ export default function TextEditor() {
     ],
     editorProps: {
       attributes: {
-        class: "w-full min-h-60 bg-[#6d5cbc05] outline-none",
+        class: "w-full min-h-60 p-8 bg-[#6d5cbc05] outline-none",
       },
     },
     content: "",
