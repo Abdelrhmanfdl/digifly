@@ -194,33 +194,31 @@ export default function TextEditor() {
   }, [editor?.state]);
 
   return (
-    <div>
-      <div className="flex flex-col w-full border-[1px] border-solid border-[##6d5cbc1a]">
-        <div className="relative w-full z-[9999]">
-          <Toolbar
-            status={positionStatus}
-            toggleBold={toggleBold}
-            toggleItalic={toggleItalic}
-            toggleUnderline={toggleUnderline}
-            applyFontSize={applyFontSize}
-            applyIndent={applyIndent}
-            applyOutdent={applyOutdent}
-            applyAlignLeft={applyAlignLeft}
-            applyAlignCenter={applyAlignCenter}
-            applyAlignRight={applyAlignRight}
-            applyUL={applyUnorderedList}
-            applyOL={applyOrderedList}
-            applyFontFamily={applyFontFamily}
-            applyUndo={applyUndo}
-            applyRedo={applyRedo}
-            addDividor={addDividor}
-            addSmile={addSmile}
-          />
-        </div>
+    <div className="m-auto flex flex-col w-full border-[1px] border-solid border-[##6d5cbc1a] max-w-[1200px]">
+      <div className="relative w-full z-[9999]">
+        <Toolbar
+          status={positionStatus}
+          toggleBold={toggleBold}
+          toggleItalic={toggleItalic}
+          toggleUnderline={toggleUnderline}
+          applyFontSize={applyFontSize}
+          applyIndent={applyIndent}
+          applyOutdent={applyOutdent}
+          applyAlignLeft={applyAlignLeft}
+          applyAlignCenter={applyAlignCenter}
+          applyAlignRight={applyAlignRight}
+          applyUL={applyUnorderedList}
+          applyOL={applyOrderedList}
+          applyFontFamily={applyFontFamily}
+          applyUndo={applyUndo}
+          applyRedo={applyRedo}
+          addDividor={addDividor}
+          addSmile={addSmile}
+        />
+      </div>
 
-        <div className="z-0 editor-container">
-          <EditorContent editor={editor} />
-        </div>
+      <div className="z-0 editor-container">
+        <EditorContent editor={editor} />
       </div>
     </div>
   );
