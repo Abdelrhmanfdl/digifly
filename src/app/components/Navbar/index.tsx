@@ -27,12 +27,6 @@ const Navbar = () => {
     return styles;
   };
 
-  /**
-
-  [] [] [] []
- 
- */
-
   return (
     <nav className="bg-trasparent absolute w-full">
       <div className="max-w-6xl mx-auto px-4">

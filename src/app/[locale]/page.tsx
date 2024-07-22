@@ -12,14 +12,14 @@ function Home({ params: { locale } }: any) {
         <Navbar />
       </div>
       <div
-        className={`relative flex min-h-screen flex-col items-center justify-between p-24 overflow-x-hidden z-0`}
+        className={`relative flex min-h-screen flex-col items-center justify-between py-24 overflow-x-hidden z-0`}
       >
         <BackgroundLightSpot className="w-[120vw] h-[100vh] left-[20%] top-[-50px] z-0" />
 
-        <div className="w-full z-10">
+        <div className="contained my-8 z-10">
           <FormSection />
         </div>
-        <div className="w-full my-8">
+        <div className="w-full 2xl:w-10/12 my-8">
           <MapComponent
             position={[30.0616113, 31.3368422]}
             tooltipContent={
@@ -31,7 +31,7 @@ function Home({ params: { locale } }: any) {
             }
           />
         </div>
-        <div className="w-full my-8 z-100">
+        <div className="contained w-full my-10 z-100">
           <TextEditor />
         </div>
       </div>

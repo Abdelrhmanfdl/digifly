@@ -5,3 +5,7 @@
 nav .drop-down-item {
   @apply hover:bg-digifly-green hover:text-white m-1;
 }
+
+.contained {
+  @apply w-full lg:w-10/12 px-4 lg:p-0 md:p-2;
+}

@@ -24,7 +24,7 @@ export default function TextInput({
       <input
         {...formHookRegistration}
         type="text"
-        className={`${inputClassName} w-full h-[52px] py-4 px-6 general-gray-border`}
+        className={`${inputClassName} w-full h-[52px] py-4 px-6 general-gray-border outline-none`}
         onInput={(e) => onInput?.(e)}
         placeholder={placeHolder}
       />
