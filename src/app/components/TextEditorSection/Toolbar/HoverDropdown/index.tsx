@@ -47,7 +47,7 @@ export default function HoverDropdown({
 
   return (
     <div
-      className="w-full relative text-center inline-block left-0 hover-drop-down"
+      className="w-min relative text-center inline-block left-0 hover-drop-down"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
