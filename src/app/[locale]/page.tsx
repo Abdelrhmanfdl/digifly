@@ -12,7 +12,7 @@ function Home({ params: { locale } }: any) {
 
   return (
     <main>
-      <div className="relative z-10">
+      <div>
         <Navbar />
       </div>
       <div
@@ -20,10 +20,10 @@ function Home({ params: { locale } }: any) {
       >
         <BackgroundLightSpot className="w-[120vw] h-[100vh] left-[20%] top-[-50px] z-0" />
 
-        <div className="contained my-8 z-10">
+        <div className="contained my-16 z-10">
           <FormSection />
         </div>
-        <div className="w-full 2xl:w-10/12 my-8">
+        <div className="w-full 2xl:w-10/12 my-24">
           <MapComponent
             position={[30.0616113, 31.3368422]}
             tooltipContent={
