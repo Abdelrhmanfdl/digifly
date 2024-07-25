@@ -37,10 +37,10 @@ input[type="text"]::placeholder {
   border-color: rgba(229, 229, 229, 1) !important;
 }
 
-.locale-root:lang("en") {
+.locale-root:lang(en) {
   direction: ltr;
 }
-.locale-root:lang("ar") {
+.locale-root:lang(ar) {
   direction: rtl;
 }
 
